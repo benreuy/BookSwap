@@ -1,0 +1,27 @@
+<section class="signup-form">
+    <form fxLayout="column" fxLayoutAlign="center center"  fxLayoutGap="10px" 
+    [formGroup]="loginForm"
+    (ngSubmit)="onSubmit()">
+      <mat-form-field>
+        <input 
+        type="email"
+         matInput
+          placeholder="דוא'ל" 
+        formControlName="email">
+        <mat-error >Field must not be empty.</mat-error>
+        <mat-error >E-Mail is invalid.</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <input type="password" matInput placeholder="סיסמא" formControlName="password">
+        <mat-hint align="end">{{loginForm.controls.password.value?.length }} / 6</mat-hint>
+        <mat-error>Has to be at least 6 characters long.</mat-error>
+      </mat-form-field>
+     <mat-form-field>
+       <input type="text" matInput placeholder="בחר מיקום"  formControlName="location">
+       <mat-error>
+        כתובת לא קיימת
+     </mat-error>
+     </mat-form-field>
+      <button type="submit" [disabled]="loginForm.invalid" mat-raised-button color="primary" >הירשם</button>
+    </form>
+  </section>  

@@ -1,0 +1,14 @@
+<section>
+  <form #f="ngForm" (ngSubmit)="redirectToMyBooks(f)" class="searchboxform" fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="10px">   
+    <mat-form-field>
+      <input required placeholder="חפש ספר" ngModel search name="search" type="text" matInput (input)="onInputChanged($event.target.value)" [matAutocomplete]="auto">
+    </mat-form-field>
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let option of options" [value]="option.name">{{ option.name }}</mat-option>
+    </mat-autocomplete>
+    
+    <button type="submit" mat-raised-button color="primary" [disabled]="f.invalid">הוסף לספרים שלי</button>
+    <button type="button" mat-raised-button color="primary" [disabled]="f.invalid" (click)="redirectToWishZone(f)">הוסף למשאלות</button>
+  
+  </form>
+</section>

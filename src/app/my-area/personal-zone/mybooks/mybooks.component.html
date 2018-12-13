@@ -1,0 +1,78 @@
+<app-privatezonenav></app-privatezonenav>
+
+<table mat-table  [dataSource]="books" class="tblMyBooks mat-elevation-z8">
+        <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+                <!-- <mat-checkbox (click)="$event.stopPropagation()" (change)="isAllSelected($event)" [checked]="selection.hasValue()" [indeterminate]="selection.hasValue() && !isAllSelected()">
+                </mat-checkbox> -->
+            </th>
+            <td mat-cell *matCellDef="let row">
+                <mat-checkbox  (change)="toggleRow(row)"  [checked]="selection.isSelected(row)" (change)="$event ? selection.toggle(row) : null" >
+                </mat-checkbox>
+            </td>
+        </ng-container>
+    <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> שם </th>
+        <td mat-cell *matCellDef="let book"> {{book.name}} </td>
+    </ng-container>
+    <ng-container matColumnDef="style">
+        <th mat-header-cell *matHeaderCellDef> סגנון </th>
+        <td mat-cell *matCellDef="let book"> {{book.style}} </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+    <tr mat-row *matRowDef="let book; columns: columnsToDisplay"></tr>
+
+
+</table>
+<section class="seSearchBook" fxLayout fxLayoutAlign="center">
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)"> 
+
+        <mat-card fxFlex.xs="100%">
+            <mat-card-title fxLayoutAlign="center">בחר ספר שברצונך להוסיף למאגר שלך</mat-card-title>
+            <mat-card-content fxLayoutAlign="center">
+        
+                <button type="submit" mat-raised-button>הוסף ספר</button>
+                <mat-form-field>
+        
+                    <input  [(ngModel)] = "bookname" search name="search" type="text" matInput (input)="onInputChanged($event.target.value)" [matAutocomplete]="auto">
+                </mat-form-field>
+                <mat-autocomplete #auto="matAutocomplete">
+                    <mat-option *ngFor="let option of options" [value]="option.name">{{ option.name }}</mat-option>
+                </mat-autocomplete>
+        
+        
+        
+            </mat-card-content>
+        
+        </mat-card>
+    </form>
+</section>
+<!-- <section *ngIf="bookFound"  class="secSearchResults" fxLayout fxLayoutAlign="center">
+    <form #d="ngForm" (ngSubmit)="addBookToMyRepo(d)">
+
+        <mat-card fxFlex.xs="100%" >
+
+            <mat-card-content fxLayoutAlign="center">
+            
+
+                <div    ngModel bookdesc  name="bookdesc"> התרצה להוסיף את  {{book.name}} למאגר הספרים שלך? </div>               
+                         
+                <button type="submit" mat-raised-button>הוסף ספר</button>
+            
+            
+            </mat-card-content>
+
+
+
+        </mat-card>
+    </form>
+</section> -->
+
+
+
+      <!-- <app-search-book  (searchResult)="doSomething($event)"></app-search-book> -->
+
+<!-- <div class="dvResults" *ngIf="bookFound">
+    נמצא הספר שאתה מחפש {{book.name}}
+
+</div> -->

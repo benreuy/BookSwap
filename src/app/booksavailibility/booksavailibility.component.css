@@ -1,0 +1,8 @@
+mat-card{width:100%}
+mat-card-title{font-size: 16px}
+mat-card-content button{background-color: rgb(65, 65, 117);height:30px;color:white;margin-top:10px;margin-right: 10px}
+mat-autocomplete{top:200px}
+section{margin-top:12px;margin:0 auto;margin:0 auto;width:50%}
+form{width:100%;margin-top:10px}
+table,.dvResults {width: 100%;margin:0 auto;}
+table th{background-color: rgb(93, 85, 134);color: white}
